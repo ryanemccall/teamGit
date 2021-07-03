@@ -62,8 +62,8 @@ also for reason when it is in - the openweather content displays 2x in the app l
         </Router>
         <Router>
            <Nasa
-            setLat={setLat}
-            setLong={setLong}
+            // setLat={setLat}
+            // setLong={setLong}
             lat={lat}
             long={long}
           />
