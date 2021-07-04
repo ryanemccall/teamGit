@@ -15,30 +15,36 @@ const TicketMaster = (props) => {
     
     const {lat, long} = props;
 
-    console.log(`Lat: ${lat}, Lon: ${long}`);
+    console.log(`top of TicketMaster - Lat: ${lat}, Lon: ${long}`);
+    
 
-
+    if (lat && long) {
     const url = `https://app.ticketmaster.com/discovery/v2/events?apikey=etyd9ynkKnLqJWFl0KV66dolqNYGtCIK&latlong=${lat},${long}&radius=25&unit=miles&source=%20universe&locale=*`;
 
+    console.log(url);
+
     // let localEvents = JSON.parse(url);
-    // console.log(localEvents);
+    // console.log(localEvents );
 
     const getLocalEvents = async () => {
-        let display=undefined;
         try {
             const res = await fetch(url);
             const jsonData = res.json();
-            // console.log(`***** Data: ${JSON.stringify(jsonData, null,4)}, ${JSON.stringify(jsonData._embedded.events[0],null,4)}`);
+            console.log(`***** Data: ${JSON.stringify(jsonData, null,4)}, ${JSON.stringify(jsonData._embedded.events[0].url,null,4)}`);
             console.log(`***** Drilled-in Data: ${JSON.stringify(jsonData._embedded.events[0].name,null,5)}`);
-            display = JSON.stringify(jsonData._embedded.events[0].name);
+            let display = JSON.stringify(jsonData._embedded.events[0].name);
             return display;
         } catch(err) {
             console.error(`Error: ${err},`);
             return
         }
 
-        return "RETURN DISPLAY HERE " + display;
+        // return "RETURN DISPLAY HERE " + display;
     };
+
+    getLocalEvents();
+}
+
 
     // let display = getLocalEvents();
     // useEffect(() => {
@@ -66,7 +72,7 @@ return lat && long ?
             // if we don't get lat lon, serve this instead
         <div>
             <br />
-            <h3>Events within about 25 minles of you</h3>
+            <h3>Events within about 25 miles of you</h3>
             <p>Unfortunately, we can't determine your location. In a broad sense, then, all events on Earth could be available to you, though not all will be convenient.</p>
         </div>
         );

@@ -14,12 +14,12 @@ function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   
-  const getLocation = () => {
+  const getLocation = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position);
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
+        // console.log(position);
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
   };
   
   getLocation();
@@ -47,7 +47,7 @@ function App() {
         {/* <Router>
           <Sidebar />
         </Router> 
-I'm commenting out this for now until it get's sorted - not high priority
+I'm commenting out this for now until it gets sorted - not high priority
 also for reason when it is in - the openweather content displays 2x in the app landing
 */}
         
