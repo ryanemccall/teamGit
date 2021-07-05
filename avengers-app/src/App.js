@@ -14,12 +14,12 @@ function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   
-  const getLocation = () => {
+  const getLocation = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position);
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
+        // console.log(position);
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
   };
   
   getLocation();
@@ -68,7 +68,6 @@ function App() {
             long={long}
           />
         </Router> 
-
 
         
         {/*Commenting Out the additional Routers and nesting them into one Router to see if stops the double display from Sidebar */ }
