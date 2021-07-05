@@ -4,7 +4,7 @@ const Nasa = (props) => {
     
     const {lat, long} = props;
 
-    console.log(`Lat: ${lat}, Lon: ${long}`);
+    // console.log(`Lat: ${lat}, Lon: ${long}`);
 
     // const [imgData, setImgData] = useState({});
 
@@ -14,7 +14,7 @@ const Nasa = (props) => {
 const imgData = lat && long ? url : defaultURL;
 
 
-    console.log(url);
+    // console.log(url);
 
     // useEffect(() => {
     //     fetchLocalImage();
