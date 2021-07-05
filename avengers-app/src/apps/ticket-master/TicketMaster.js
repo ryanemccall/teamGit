@@ -10,7 +10,7 @@ const TicketMaster = (props) => {
     let listItemImageURL = document.createElement('img');
 
     
-    let [eventName, setEventName] = useState("");
+    // let [eventName, setEventName] = useState("");
 
     // return (
     //     <div>
@@ -41,12 +41,12 @@ const TicketMaster = (props) => {
             let allEventsArray = jsonData._embedded.events;
 
             console.log(`---------------------------------`);
-            for (let i=0; i<allEventsArray.length; i++) {
-                console.log(allEventsArray[i].name);
-                console.log(allEventsArray[i].url);
-                console.log(allEventsArray[i].images[2].url);
+            // for (let i=0; i<allEventsArray.length; i++) {
+            //     console.log(allEventsArray[i].name);
+            //     console.log(allEventsArray[i].url);
+            //     console.log(allEventsArray[i].images[2].url);
 
-            };
+            // };
             console.log(`---------------------------------`);
 
             setEvents(allEventsArray);
@@ -57,22 +57,21 @@ const TicketMaster = (props) => {
 
     }, [url]);
 
+    // building the DOM here somehow built it out twice. Don't entirely understand how/why yet. Leaving the code and this comment in this commit for the education of future generations
+    // for (let i=0; i<events.length; i++) {
+    //     listItemURL.setAttribute("href", events[i].url);
+    //     listItemURL.textContent = events[i].name;
+    //     listItemImageURL.setAttribute("src", events[i].images[2].url);
 
-    console.log(`*********** RETURNED EVENTS ARRAY ************ ${events}`);
-    for (let i=0; i<events.length; i++) {
-        listItemURL.setAttribute("href", events[i].url);
-        listItemURL.textContent = events[i].name;
-        listItemImageURL.setAttribute("src", events[i].images[2].url);
-
-        listItemName.appendChild(listItemURL);
-        eventsList.appendChild(listItem);
-        listItem.appendChild(listItemImageURL);
-        listItem.appendChild(listItemName);
-    }
+    //     listItemName.appendChild(listItemURL);
+    //     eventsList.appendChild(listItem);
+    //     listItem.appendChild(listItemImageURL);
+    //     listItem.appendChild(listItemName);
+    // }
 
 if (lat && long) {
     // document.getElementById('testmeh').innerText=eventName;
-    console.log(`last go at eventName ${eventName}`);
+    // console.log(`last go at eventName ${eventName}`);
     return (
         (
             <div>
@@ -80,8 +79,23 @@ if (lat && long) {
                 <h3>Events within about 25 miles of you</h3>
                 <div>
                     {/* <p>if we get lat lon, list any returns here</p> */}
-                    <ul id='events-list'>
-                    {/* {`${JSON.stringify(events, null, 4)}`} */}
+                    
+                    <ul>
+                    {events.map((event, index) => {
+                        return (
+                            <li key={index}>
+                            <h4>
+                            <a href={event.url}>
+                            {event.name}
+                            </a>
+                            </h4>
+                            <img src={event.images[3].url} 
+                            height={event.images[3].height} 
+                            width={event.images[3].width}
+                            alt="promotional shot of the event" />
+                            </li>
+                        );
+                    })}
                     </ul>
                 </div>
             </div>
