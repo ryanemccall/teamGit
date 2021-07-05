@@ -45,7 +45,7 @@ function App() {
         </p>
         
         <Router>
-          <Sidebar />
+          {/* <Sidebar /> */}
 
           <TicketMaster
             setLat={setLat}
