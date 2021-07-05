@@ -3,11 +3,11 @@ const TicketMaster = (props) => {
 
     const [events, setEvents] = useState([]);
     
-    let eventsList = document.getElementById('events-list');
-    let listItem = document.createElement('li');
-    let listItemName = document.createElement('h4');
-    let listItemURL = document.createElement('a');
-    let listItemImageURL = document.createElement('img');
+    // let eventsList = document.getElementById('events-list');
+    // let listItem = document.createElement('li');
+    // let listItemName = document.createElement('h4');
+    // let listItemURL = document.createElement('a');
+    // let listItemImageURL = document.createElement('img');
 
     
     // let [eventName, setEventName] = useState("");
@@ -23,11 +23,14 @@ const TicketMaster = (props) => {
 
     // );
 
-    
-    const {lat, long} = props;
-    let url = `https://app.ticketmaster.com/discovery/v2/events?apikey=etyd9ynkKnLqJWFl0KV66dolqNYGtCIK&latlong=${lat},${long}&radius=25&unit=miles&source=%20universe&locale=*`;
+    let date = new Date();
+    date.setDate(date.getDate() + 30);
+    let dateString = date.toISOString();
 
-    console.log(`top of TicketMaster - Lat: ${lat}, Lon: ${long}`);
+    const {lat, long} = props;
+    let url = `https://app.ticketmaster.com/discovery/v2/events?apikey=etyd9ynkKnLqJWFl0KV66dolqNYGtCIK&latlong=${lat},${long}&radius=25&unit=miles&sort=random&locale=*`;
+
+    console.log(`top of TicketMaster - Lat: ${lat}, Lon: ${long} Date: ${dateString}`);
 
 
     console.log(`URL: ${url}`);
@@ -76,7 +79,7 @@ if (lat && long) {
         (
             <div>
                 <br />
-                <h3>Events within about 25 miles of you</h3>
+                <h3>Here's an event or 20, coming soon to within about 25 miles of you</h3>
                 <div>
                     {/* <p>if we get lat lon, list any returns here</p> */}
                     
@@ -89,10 +92,11 @@ if (lat && long) {
                             {event.name}
                             </a>
                             </h4>
-                            <img src={event.images[3].url} 
-                            height={event.images[3].height} 
-                            width={event.images[3].width}
+                            <img src={event.images[1].url} 
+                            height={'auto'} 
+                            width={'80%'}
                             alt="promotional shot of the event" />
+                            <hr />
                             </li>
                         );
                     })}
