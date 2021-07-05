@@ -44,15 +44,35 @@ function App() {
           longitude: {long}
         </p>
         
-        {/* <Router>
-          <Sidebar />
-        </Router> 
-I'm commenting out this for now until it get's sorted - not high priority
-also for reason when it is in - the openweather content displays 2x in the app landing
-*/}
-        
-        
         <Router>
+          <Sidebar />
+
+          <TicketMaster
+            setLat={setLat}
+            setLong={setLong}
+            lat={lat}
+            long={long}
+          />
+
+          <Nasa
+            setLat={setLat}
+            setLong={setLong}
+            lat={lat}
+            long={long}
+          />
+
+          <OpenWeather
+            setLat={setLat}
+            setLong={setLong}
+            lat={lat}
+            long={long}
+          />
+        </Router> 
+
+
+        
+        {/*Commenting Out the additional Routers and nesting them into one Router to see if stops the double display from Sidebar */ }
+        {/* <Router>
           <TicketMaster
             setLat={setLat}
             setLong={setLong}
@@ -77,7 +97,7 @@ also for reason when it is in - the openweather content displays 2x in the app l
             long={long}
           />
           
-        </Router>
+        </Router> */}
         
         <br />
           <ul>
