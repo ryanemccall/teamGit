@@ -32,8 +32,8 @@ const TicketMaster = (props) => {
 
 
     const getLocalEvents = async () => {
-        // This code only deals with one event - so so so brittle. But right now I would be happy to get ANY event onto the page, and not just console.log. Still, the giant TODO is to have it iterate through a collection of events, if any, and display, or fail gracefully when no events
-            const res = await fetch(url);
+        // This code only deals with one event - so so so brittle. But right now I would be happy to get ANY event onto the page, and not just console.log. Still, the giant TODO is to have it iterate through a collection of events, if any, and display, or fail gracefully when no events. https://allorigins.win/ fixes the CORS issue
+            const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
             const jsonData = await res.json();
 
             console.log(`***** EVENT URL Data: ${JSON.stringify(jsonData._embedded.events[0].url,null,4)}`);
