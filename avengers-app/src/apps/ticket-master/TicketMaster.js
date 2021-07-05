@@ -3,6 +3,7 @@ const TicketMaster = (props) => {
     
     let [eventName, setEventName] = useState("");
     let [eventURL, setEventURL] = useState("");
+    let [eventImgURL, setEventImgURL] = useState("");
     // return (
     //     <div>
     //         <br />
@@ -35,10 +36,32 @@ const TicketMaster = (props) => {
         // This code only deals with one event - so so so brittle. But right now I would be happy to get ANY event onto the page, and not just console.log. Still, the giant TODO is to have it iterate through a collection of events, if any, and display, or fail gracefully when no events. https://allorigins.win/ fixes the CORS issue
             const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
             const jsonData = await res.json();
+            let allEventsArray = jsonData._embedded.events;
+            let eventsList = document.getElementById('events-list');
+            let listItem = document.createElement('li');
+            let listItemName = document.createElement('h4');
+            let listItemURL = document.createElement('a');
+            let listItemImageURL = document.createElement('img');
 
             console.log(`***** EVENT URL Data: ${JSON.stringify(jsonData._embedded.events[0].url,null,4)}`);
 
             console.log(`***** EVENT NAME Data: ${JSON.stringify(jsonData._embedded.events[0].name,null,5)}`);
+
+            console.log(`DIRECT FROM jsonData\n${jsonData._embedded.events[0].name}`);
+
+
+            console.log(`---------------------------------`);
+            
+            for (let i=0; i<allEventsArray.length; i++) {
+                console.log(allEventsArray[i].name);
+                console.log(allEventsArray[i].url);
+                console.log(allEventsArray[i].images[2].url);
+
+                eventsList.appendChild(listItem);
+                listItem.appendChild(listItemName);
+            
+            };
+            console.log(`---------------------------------`);
 
             setEventName(() => {
                 eventName = jsonData._embedded.events[0].name;
@@ -46,8 +69,12 @@ const TicketMaster = (props) => {
             setEventURL(() => {
                 eventURL = jsonData._embedded.events[0].url;
             })
+            setEventImgURL(() => {
+                eventImgURL = jsonData._embedded.events[0].images[2].url;
+            })
 
-            console.log(`eventNAME: ${eventName} \n eventURL: ${eventURL}`);
+            console.log(`eventNAME: ${eventName} \neventURL: ${eventURL}\neventImgURL: ${eventImgURL}`);
+
             return;
     };
 
@@ -63,8 +90,9 @@ if (lat && long) {
                 <h3>Events within about 25 miles of you</h3>
                 <div>
                     <p>if we get lat lon, list any returns here</p>
-                    <p id='testmeh'>display</p>
-                    <p>{eventName}</p>
+                    <ul id='events-list'>
+
+                    </ul>
                 </div>
             </div>
             )
