@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
-import Sidebar from "./Sidebar";
+//import Sidebar from "./Sidebar";
 import TicketMaster from "./apps/ticket-master/TicketMaster";
 import Nasa from "./apps/nasa/Nasa";
 import OpenWeather from "./apps/open-weather/OpenWeather";
@@ -29,13 +29,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <br />
         <img src={logo} className="App-logo" alt="logo" />
         <br />
         
         <h1>
-          Avengers 72-hr Project
+          The Avengers 72-hr Project
         </h1>
-        
+        <p class="small">An app all about location, location, location. </p>
           <p>
           Your current location:
           <br />
@@ -46,14 +47,7 @@ function App() {
         
         <Router>
           {/* <Sidebar /> */}
-
-          <TicketMaster
-            setLat={setLat}
-            setLong={setLong}
-            lat={lat}
-            long={long}
-          />
-
+          
           <Nasa
             setLat={setLat}
             setLong={setLong}
@@ -67,38 +61,19 @@ function App() {
             lat={lat}
             long={long}
           />
-        </Router> 
-
-        
-        {/*Commenting Out the additional Routers and nesting them into one Router to see if stops the double display from Sidebar */ }
-        {/* <Router>
           <TicketMaster
             setLat={setLat}
             setLong={setLong}
             lat={lat}
             long={long}
           />
-        </Router>
-        <Router>
-           <Nasa
-            // setLat={setLat}
-            // setLong={setLong}
-            lat={lat}
-            long={long}
-          />
-        </Router>
-        
-        <Router>
-           <OpenWeather
-            setLat={setLat}
-            setLong={setLong}
-            lat={lat}
-            long={long}
-          />
-          
-        </Router> */}
-        
+
+        </Router> 
+
         <br />
+        <small className="text-muted">
+        <h5>Group Members
+        </h5>
           <ul>
             <li>
               Shannon
@@ -110,7 +85,8 @@ function App() {
               Em J
             </li>
           </ul>
-          
+          </small>
+      
       </header>
     </div>
   );

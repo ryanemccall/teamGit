@@ -39,4 +39,28 @@
 
 li {
 font-size: 14px;
+list-style: none;
+}
+
+.apiDisplay {
+background-color: #3e4450;
+}
+
+.card {
+margin: auto;
+background-color:#282c34!important;
+padding: 1em;
+border-radius: 1em;
+border-style: none;
+max-width: 80%;
+}
+.card-img {
+  border-radius: .7em;}
+
+#satImg {
+  border-radius: 1em;
+}
+
+.high-contrast {
+color:white!important;
 }

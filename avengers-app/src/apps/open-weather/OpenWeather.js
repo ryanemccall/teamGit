@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Button } from 'reactstrap';
 
 const baseURL = 'https://api.openweathermap.org/data/2.5/onecall'
 const key = '0c0cca99463c77df2df1120359bcb1bd';
@@ -48,19 +49,29 @@ const OpenWeather = (props) => {
     
     return (
         <div>
-            <h3>
-            OpenWeather API
-            </h3>
+            <br />
+            <h2>
+           Local Weather
+            </h2>
             <div>
-                <button onClick={(event) => handleSubmit(event)}>Click Here for Current Weather in your Area!</button>
-                
+                <p>Local weather conditions as you head out today:</p>
             </div>
             <p>
-                Current Temperature: {temperature}{unit}
+                Current Temperature: {temperature} {unit}
                 <br />
-                Feels Like: {feelsLike}{unit}
-                </p>
-                <button onClick={convertUnit}>Convert to {otherUnit}</button>
+                Feels Like: {feelsLike} {unit}
+            </p>
+            <Button onClick={(event) => handleSubmit(event)}>Current Weather in your Area</Button>
+            <br />
+            <br />
+            <Button onClick={convertUnit}>Convert to {otherUnit}</Button>
+            <br />
+            <br />
+            <p>
+                <small className="text-muted">
+                All weather data sourced from the <a class="App-link" href="https://openweathermap.org/current" target="_blank" rel="noreferrer">Open Weather API.</a>
+            </small>
+            </p>
         </div>
 
     );
