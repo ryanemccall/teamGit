@@ -1,4 +1,4 @@
-import { useEffect, useState, } from 'react';
+import { useEffect, useState } from 'react';
 const TicketMaster = (props) => {
 
     const [events, setEvents] = useState([]);
@@ -62,7 +62,7 @@ const TicketMaster = (props) => {
                 <div>
                 <br />
                 <h3>Events within about 25 miles of you</h3>
-                <p>Unfortunately, we can't determine your location. In a broad sense, then, all events on Earth could be available to you, though not all will be convenient.</p>
+                <p>Unfortunately, we cannot determine your location. In a broad sense, then, all events on Earth could be available to you, though not all will be convenient.</p>
             </div>
         )
     }
