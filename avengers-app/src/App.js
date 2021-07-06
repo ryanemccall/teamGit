@@ -74,17 +74,8 @@ function App() {
         <small className="text-muted">
         <h5>Group Members
         </h5>
-          <ul>
-            <li>
-              Shannon
-            </li>
-            <li>
-              Ryan M
-            </li>
-             <li>
-              Em J
-            </li>
-          </ul>
+        <p> Shannon D &nbsp; | &nbsp; Ryan M &nbsp; | &nbsp; Em J </p>
+
           </small>
       
       </header>
