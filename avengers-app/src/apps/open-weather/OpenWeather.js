@@ -8,8 +8,8 @@ const OpenWeather = (props) => {
     const {lat, long} = props;
     const [temperature, setTemperature] = useState("");
     const [feelsLike, setFeelsLike] = useState("");
-    const [unit, setUnit] = useState("F");
-    const otherUnit = unit === "F" ? "C" : "F";
+    const [unit, setUnit] = useState("\u00b0 F");
+    const otherUnit = unit === "\u00b0 F" ? "\u00b0 C" : "\u00b0 F";
 
     const fetchResults = () => {
         let url = `${baseURL}?lat=${lat}&lon=${long}&units=imperial&exclude=minutely&appid=${key}`
@@ -30,14 +30,14 @@ const OpenWeather = (props) => {
     };
 
     let convertUnit = () => {
-        if (unit === "F") {
+        if (unit === "\u00b0 F") {
             let newTemp = ((temperature -32) * 5) / 9;
             let newFeel = ((feelsLike -32) * 5) / 9;
             setTemperature(Math.round(newTemp))
             setFeelsLike(Math.round(newFeel))
             setUnit(otherUnit);
         }
-        if (unit === "C") {
+        if (unit === "\u00b0 C") {
             let newTemp = temperature * 1.8 + 32;
             let newFeel = feelsLike * 1.8 + 32;
             setTemperature(Math.round(newTemp))
