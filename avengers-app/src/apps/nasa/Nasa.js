@@ -9,11 +9,22 @@ const Nasa = (props) => {
     const imgData = lat && long ? url : defaultURL;
 
     return (
-        <div>
+        <div className="apiDisplay">
             <br />
-            <h3>Nasa API</h3>
+            <h2>Satellite View</h2>
             <p>The best available shot of your current location:</p>
-            <img src={imgData} alt='the best available sattelite shot of your location' width='80%' max-width='800px' height='auto'/>
+            
+            <img
+                id="satImg"
+                src={imgData}
+                alt='the best available satellite shot of your location'
+                width='50%'
+                max-width='800px'
+                height='auto' />
+           
+            <p>
+                <small className="text-muted high-contrast">All satellite images sourced from the <a class="App-link" href="https://api.nasa.gov/" target="_blank" rel="noreferrer">NASA API.</a></small>
+            </p>
         </div>
     );
 };
