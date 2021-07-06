@@ -17,8 +17,8 @@ function App() {
   const getLocation = async () => {
     navigator.geolocation.getCurrentPosition(function (position) {
         // console.log(position);
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
+        setLat((position.coords.latitude).toFixed(3)); //to fixed will round the variable to 3 decimal points
+        setLong((position.coords.longitude).toFixed(3));
       });
   };
   
