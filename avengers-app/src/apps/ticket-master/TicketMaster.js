@@ -8,7 +8,6 @@ const TicketMaster = (props) => {
     
     let url = `https://app.ticketmaster.com/discovery/v2/events?apikey=etyd9ynkKnLqJWFl0KV66dolqNYGtCIK&latlong=${lat},${long}&radius=25&unit=miles&sort=random&locale=*`;
 
-
     useEffect(() => {
 
         const getLocalEvents = async () => {
@@ -25,9 +24,7 @@ const TicketMaster = (props) => {
 
     }, [url]);
 
-
     if (lat && long) {
-
         return (
             (
                 <div className="apiDisplay">
@@ -40,37 +37,37 @@ const TicketMaster = (props) => {
                         {/* <p>if we get lat lon, list any returns here</p> */}
                         
                         <Card>
-                        {events.map((event, index) => {
-                            return (
-                                <Card key={index}>
+                            {events.map((event, index) => {
+                                return (
+                                    <Card key={index}>
                                     
-                                     <CardImg src={event.images[1].url} 
-                                        alt="promotional shot of the event" />
-                                    <CardBody>
-                                        <CardTitle>{event.name}</CardTitle>
-                                     <Button
-                                            href={event.url} target="_blank" rel="noreferrer">
-                                            More Info
-                                        </Button>
-                                        {/* //image used to be here */}
+                                        <CardImg src={event.images[1].url}
+                                            alt="promotional shot of the event" />
+                                        <CardBody>
+                                            <CardTitle>{event.name}</CardTitle>
+                                            <Button
+                                                href={event.url} target="_blank" rel="noreferrer">
+                                                More Info
+                                            </Button>
+                                            {/* //image used to be here */}
                                         </CardBody>
-                                </Card> 
-                            );
+                                    </Card>
+                                );
                              
-                        })}
-                                      <p>
-                        <small className="text-muted">
-                            All event information sourced from the <a class="App-link" href="https://developer.ticketmaster.com/products-and-docs/apis/getting-started/" target="_blank" rel="noreferrer">Ticket Master API.</a>
-                            </small>
+                            })}
+                            <p>
+                                <small className="text-muted">
+                                    All event information sourced from the <a class="App-link" href="https://developer.ticketmaster.com/products-and-docs/apis/getting-started/" target="_blank" rel="noreferrer">Ticket Master API.</a>
+                                </small>
                     
-                    </p>
+                            </p>
                         </Card>
-                           <br />
+                        <br />
                  
                     </div>
                     
                 </div>
-                )
+            )
         )
     } else {
         return (
