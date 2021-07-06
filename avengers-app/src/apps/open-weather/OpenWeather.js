@@ -32,12 +32,16 @@ const OpenWeather = (props) => {
     let convertUnit = () => {
         if (unit === "F") {
             let newTemp = ((temperature -32) * 5) / 9;
+            let newFeel = ((feelsLike -32) * 5) / 9;
             setTemperature(Math.round(newTemp))
+            setFeelsLike(Math.round(newFeel))
             setUnit(otherUnit);
         }
         if (unit === "C") {
             let newTemp = temperature * 1.8 + 32;
+            let newFeel = feelsLike * 1.8 + 32;
             setTemperature(Math.round(newTemp))
+            setFeelsLike(Math.round(newFeel))
             setUnit(otherUnit);
         }
     }
