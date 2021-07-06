@@ -25,6 +25,7 @@ const OpenWeather = (props) => {
         .catch(err => console.log(err));
         
     };
+    // Added the event handler because without a button you will need a paid version of Open Weather because the maximum requests for the day are too low. 
     const handleSubmit = (event) => {
         event.preventDefault();
         fetchResults();
