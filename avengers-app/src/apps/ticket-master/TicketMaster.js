@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 const TicketMaster = (props) => {
 
     const [events, setEvents] = useState([]);
-
     const {lat, long} = props;
+    
     let url = `https://app.ticketmaster.com/discovery/v2/events?apikey=etyd9ynkKnLqJWFl0KV66dolqNYGtCIK&latlong=${lat},${long}&radius=25&unit=miles&sort=random&locale=*`;
 
 
@@ -62,11 +62,10 @@ const TicketMaster = (props) => {
                 <div>
                 <br />
                 <h3>Events within about 25 miles of you</h3>
-                <p>Unfortunately, we can't determine your location. In a broad sense, then, all events on Earth could be available to you, though not all will be convenient.</p>
+                <p>Unfortunately, we cannot determine your location. In a broad sense, then, all events on Earth could be available to you, though not all will be convenient.</p>
             </div>
         )
     }
-
 };
 
 export default TicketMaster;
